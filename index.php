@@ -1,14 +1,13 @@
 <?php
-// 1. Membuat Class "Pengguna" (Ini adalah cetak birunya)
+// 1. Membuat Class "Pengguna" 
 class Pengguna {
-    // Menyiapkan variabel (properti) untuk menyimpan data
+    // Menyiapkan variabel untuk menyimpan data
     public $firstName;
     public $lastName;
     public $phone;
     public $address;
 
-    // Method __construct otomatis berjalan saat Object pertama kali dibuat.
-    // Tugasnya adalah memasukkan data dari form ke dalam variabel di atas.
+    // Method __construct 
     public function __construct($inputFirst, $inputLast, $inputPhone, $inputAddress) {
         $this->firstName = $inputFirst;
         $this->lastName = $inputLast;
@@ -16,10 +15,8 @@ class Pengguna {
         $this->address = $inputAddress;
     }
 
-    // Method untuk menampilkan hasil ke layar dengan format yang rapi
     public function tampilkanData() {
         echo "<div style='margin-top: 30px; padding: 20px; border: 1px solid #ccc; border-radius: 8px;'>";
-        // htmlspecialchars digunakan agar inputan aman dan tidak merusak layout
         echo "<p>Hi, my name is <strong>" . htmlspecialchars($this->firstName . " " . $this->lastName) . "</strong></p>";
         echo "<p>Phone Number : " . htmlspecialchars($this->phone) . "</p>";
         echo "<p>Address : " . nl2br(htmlspecialchars($this->address)) . "</p>";
@@ -28,14 +25,11 @@ class Pengguna {
     }
 }
 
-// 2. Mengecek Logika: Apakah ada data yang dikirim dari Form?
+// 2. Mengecek Logika
 $hasilForm = null;
 
-// Jika form disubmit (metode POST digunakan)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // 3. Membuat Object baru dari Class "Pengguna"
-    // Kita mengambil data $_POST yang dikirimkan oleh form HTML di bawah
     $hasilForm = new Pengguna(
         $_POST['firstname'],
         $_POST['lastname'],
@@ -81,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php
     // 4. Menampilkan Hasil
-    // Jika $hasilForm sudah berisi Object (artinya tombol submit sudah ditekan), panggil method tampilkanData()
     if ($hasilForm != null) {
         $hasilForm->tampilkanData();
     }
