@@ -25,7 +25,7 @@ class Pengguna {
     }
 }
 
-// 2. Mengecek Logika
+// 2. POST
 $hasilForm = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
